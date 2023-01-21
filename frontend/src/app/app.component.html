@@ -1,0 +1,28 @@
+<div class="flex w-full flex-col relative">
+  <!--Este es el header-->
+  <div class="flex w-full flex-wrap p-6 bg-primary">
+    <div class="w-1/2 font-bold text-4xl">
+      ToDo List in Angular
+    </div>
+    <div class="flex w-1/2 justify-end space-x-5">
+      <!--Aqui va el boton para agregar las tareas-->
+      <span
+        class=" bg-third  text-white px-4 py-2 rounded font-bold cursor-pointer hover:bg-opacity-80 hover:text-black duration-200 " (click)="goToMain()">
+        Main
+    </span>
+
+      <span
+        class=" bg-third  text-white px-4 py-2 rounded font-bold cursor-pointer hover:bg-opacity-80 hover:text-black duration-200" (click)="goToHistorial()">
+        Historial
+    </span>
+    </div>
+  </div>
+
+  <!--Este es el body-->
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+

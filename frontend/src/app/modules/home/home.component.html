@@ -1,0 +1,49 @@
+<div class="flex w-full flex-row flex-wrap justify-center">
+    <div class="p-4 flex flex-col">
+      <span class="text-center font-bold text-3xl italic">
+        Task
+      </span>
+        
+      <!--add task-->
+      <div class="flex form-area w-full">
+        <form #tareasForm="ngForm" class="flex flex-row" >
+
+          <label>Titulo</label>
+          <input type="text" class="border " ngModel  matInput [formControl]="nombreTarea" >
+
+          <label>Descripcion</label>
+          <input type="text" class="border" ngModel matInput [formControl]="descripcionTarea">
+
+          <label>Color</label>
+          <input type="text" class="border" ngModel matInput [formControl]="colorTarea">
+
+          <div class="mx-8 flex items-center">
+            <button mat-raised-button color="accent" (click)="serviceProduct()">{{idTarea ? 'Editar' : 'Insertar'}}</button>
+        </div>
+        <div class="flex items-center">
+          <button mat-raised-button color="warn" (click)="limpiarForm()">Cancelar</button>
+        </div>       
+        </form>
+      </div>
+
+      <!--Table-->
+      </div>
+      <div class="border flex-row w-full px-4 py-2"*ngIf="(tareas$ | async) as tareas">
+        <div class="flex flex-col px-1 border-l-4 py-1 mt-2 space-y-8" :style="{ 'border-color': {{item.color }"  >
+          <div *ngFor="let item of tareas">
+            <div class="flex flex-row">
+                <span class="w-1/4 font-bold text-xl ">
+                    {{ item.title }}
+                </span>
+                <span class=" w-1/4 italic items-center ">
+                    {{ item.description }}
+                </span>
+                <span class=" w-1/4 italic items-center">
+                  {{ item.color }} 
+                </span>
+                <button mat-raised-button color="warn" (click)="delTareas({id: item.id})">delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
